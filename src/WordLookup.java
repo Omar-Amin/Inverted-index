@@ -25,9 +25,9 @@ class WordLookup {
         try {
             List<String> lines = Files.readAllLines(p);
             for (String s:lines) {
-                for (String str: s.replace("\n","").replace("\r","") //replace newlines
-                        .split("[ .:,;\n]")) { // remove . : ; , and spaces
+                for (String str: s.split("[ .:,;\n\r]")) { // remove . : ; , and spaces
                     if(!str.equals("")){
+                        System.out.println(str);
                         hm.merge(str,1, Integer::sum);
                     }
                 }
