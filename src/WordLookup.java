@@ -9,13 +9,15 @@ import java.util.Map;
 
 class WordLookup {
     private ArrayList<Pair> invList = new ArrayList<>();
+    private String fileName;
 
-    WordLookup(){
+    WordLookup(String fileName){
+        this.fileName = fileName;
     }
 
     /**
      * With a given path, walk through all directories and find all .txt and .pdf files
-     * readFile function is applied for each .txt and .pdf file
+     * readFile function is applied for each .txt and .pdf file (just a design choice, which later can be changed)
      */
     void findFiles(Path path) throws IOException {
         Files.walk(path).filter(Files::isRegularFile).filter(p -> p.toString().endsWith(".txt") || p.toString().endsWith(".pdf")).forEach(this::readFiles);
@@ -58,7 +60,7 @@ class WordLookup {
     * Stores the inverted index in a file
     */
     private void storeIndex() throws IOException {
-        FileWriter fileWriter = new FileWriter("InvertedIndexData");
+        FileWriter fileWriter = new FileWriter(fileName);
         for (Pair p:invList) {
             fileWriter.write(p.getPath().toString() + " ");
             for (Map.Entry<String,Integer> elm:p.getHm().entrySet()) {
