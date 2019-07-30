@@ -3,14 +3,14 @@ import java.util.HashMap;
 
 public class Pair {
     private Path path;
-    private HashMap hm;
+    private HashMap<String,Integer> hm;
 
-    Pair(Path path, HashMap hm){
+    Pair(Path path, HashMap<String,Integer> hm){
         this.hm = hm;
         this.path = path;
     }
 
-    public Path getPath() {
+    Path getPath() {
         return path;
     }
 
@@ -18,7 +18,7 @@ public class Pair {
         this.path = path;
     }
 
-    public HashMap getHm() {
+    HashMap<String,Integer> getHm() {
         return hm;
     }
 
