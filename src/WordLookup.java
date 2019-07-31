@@ -17,7 +17,7 @@ class WordLookup {
 
     /**
      * With a given path, walk through all directories and find all .txt and .pdf files
-     * readFile function is applied for each .txt and .pdf file (just a design choice, which later can be changed)
+     * readFile function is applied for each .txt and .pdf file (just a design choice, which can be changed later)
      */
     void findFiles(Path path) throws IOException {
         Files.walk(path).filter(Files::isRegularFile).filter(p -> p.toString().endsWith(".txt") || p.toString().endsWith(".pdf")).forEach(this::readFiles);
