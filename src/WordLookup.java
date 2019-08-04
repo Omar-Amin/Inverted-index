@@ -40,21 +40,10 @@ class WordLookup {
             invList.add(new Pair(p,hm));
             storeIndex();
         } catch (IOException e) {
-            System.out.println("Error");;
+            System.out.println("Error");
         }
     }
 
-    /**
-     * Remove later, used for debugging only
-     */
-    void debug(){
-        for (Pair p:invList) {
-            System.out.println(p.getPath());
-            for (Map.Entry<String,Integer> elm:p.getHm().entrySet()) {
-                System.out.println("word: " + elm.getKey() + " "+ elm.getValue());
-            }
-        }
-    }
 
     /**
     * Stores the inverted index in a file
@@ -69,5 +58,9 @@ class WordLookup {
             fileWriter.write("\n");
         }
         fileWriter.close();
+    }
+
+    ArrayList<Pair> getInvList(){
+        return invList;
     }
 }
